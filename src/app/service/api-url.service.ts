@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ApiUrlService {
-  public url: any = "https://script.google.com/macros/s/AKfycbyL7qnL9xuhaz5jyLeEuHq69ItOlDKTDpDxBq7R-vFwAeK2R-YfqWt38gjOKfhQ1jk/exec?";
-  constructor() {
-  }
+  public url: any =
+    'https://script.google.com/macros/s/AKfycbzNwer0OhWz3Out4EHKVZCKYTN3sMD1NTYrpVYvZF932KWrVad06YJHDOVoeU5Z4qW3/exec?';
+  constructor() {}
 }

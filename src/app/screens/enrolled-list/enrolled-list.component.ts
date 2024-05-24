@@ -1,10 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import {
-  Component,
-
-  TemplateRef,
-  inject,
-} from '@angular/core';
+import { Component, TemplateRef, inject } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
 import { ApiUrlService } from 'src/app/service/api-url.service';
@@ -16,8 +11,6 @@ import { SchemeService } from 'src/app/service/scheme.service';
 import { schemesResponse } from '../schemes-list/schemes-list.component';
 import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { MessageConfigService } from 'src/app/service/message-config.service';
-
-
 
 @Component({
   selector: 'app-enrolled-list',
@@ -46,8 +39,8 @@ export class EnrolledListComponent {
   emis: number[] = [];
   selectedEnrolled: any;
   schemeData: any;
-editName: any;
-editNumber: any;
+  editName: any;
+  editNumber: any;
   ngOnInit(): void {
     var year = localStorage.getItem('selectedYear');
 
@@ -119,9 +112,13 @@ editNumber: any;
     this.selectedCode = code;
     this.modalService.open(content, { centered: true, size: 'md' });
   }
-  openVerticallyCenteredMaturity(content: TemplateRef<any>, code: any, sheetname: any) {
-this.maturityCode = code;
-this.maturityScheme = sheetname
+  openVerticallyCenteredMaturity(
+    content: TemplateRef<any>,
+    code: any,
+    sheetname: any
+  ) {
+    this.maturityCode = code;
+    this.maturityScheme = sheetname;
     this.modalService.open(content, { centered: true, size: 'sm' });
   }
 
@@ -135,7 +132,7 @@ this.maturityScheme = sheetname
   selectSearch(value: any) {
     this.searchTerm = value;
   }
-  payEmi(amount: any, sheetName: any, code: any, data: any, emiNumber: any, ) {
+  payEmi(amount: any, sheetName: any, code: any, data: any, emiNumber: any) {
     this.loader = true;
     this.http
       .get<any>(
@@ -147,7 +144,7 @@ this.maturityScheme = sheetname
           '&emiNumber=' +
           emiNumber +
           '&code=' +
-          code 
+          code
       )
       .subscribe((res) => {
         if (res.data[0].status === 'success') {
@@ -155,19 +152,34 @@ this.maturityScheme = sheetname
           this.loader = false;
           const dateObject = new Date();
 
+          const formattedDate = `${dateObject.getDate()}/${
+            dateObject.getMonth() + 1
+          }/${dateObject.getFullYear()}`;
 
-          const formattedDate = `${dateObject.getDate()}/${dateObject.getMonth() + 1}/${dateObject.getFullYear()}`;
-          
-
-          const formattedTime = `${dateObject.getHours()}:${(dateObject.getMinutes() < 10 ? '0' : '') + dateObject.getMinutes()}`;
-          
+          const formattedTime = `${dateObject.getHours()}:${
+            (dateObject.getMinutes() < 10 ? '0' : '') + dateObject.getMinutes()
+          }`;
 
           const result = `${formattedDate} - ${formattedTime}`;
-          if(amount != ''){
-          if(this.messageConfigService.data[1].emiMessage){
-            this.http.get<any>('https://soft7.in/api/send?number=91' + data.number +'&type=text&message=सम्मानीय+' + data.name+',%0A%0Aआपकी+किश्त+('+amount+'/-)+%0A'+ result +'+को+जमा+कर+ली+गई+है|%0Aधन्यवाद%0A%0ACard+Number-'+code+'%0A%0Aहरिदर्शन+ज्वेलर्स%0Aबीना&instance_id=658976BB30348&access_token=6578021f0b174').subscribe((res) => {})
+          if (amount != '') {
+            if (this.messageConfigService.data[1].emiMessage) {
+              this.http
+                .get<any>(
+                  'https://soft7.in/api/send?number=91' +
+                    data.number +
+                    '&type=text&message=सम्मानीय+' +
+                    data.name +
+                    ',%0A%0Aआपकी+किश्त+(' +
+                    amount +
+                    '/-)+%0A' +
+                    result +
+                    '+को+जमा+कर+ली+गई+है|%0Aधन्यवाद%0A%0ACard+Number-' +
+                    code +
+                    '%0A%0Aहरिदर्शन+ज्वेलर्स%0Aबीना&instance_id=665063C96B660&access_token=6643805abf4dc'
+                )
+                .subscribe((res) => {});
+            }
           }
-        }
 
           this.enrolled.fetch().subscribe(
             (response: enrolledResponse) => {
@@ -187,7 +199,7 @@ this.maturityScheme = sheetname
       });
     // }
   }
-  mature( sheetName: any, code: any) {
+  mature(sheetName: any, code: any) {
     this.loader = true;
     this.http
       .get<any>(
@@ -195,7 +207,7 @@ this.maturityScheme = sheetname
           'apifor=maturity&sheetName=' +
           sheetName +
           '&code=' +
-          code 
+          code
       )
       .subscribe((res) => {
         if (res.data[0].status === 'success') {
@@ -218,7 +230,7 @@ this.maturityScheme = sheetname
         }
       });
   }
-  editDetails( sheetName: any, code: any, ) {
+  editDetails(sheetName: any, code: any) {
     this.loader = true;
     this.http
       .get<any>(

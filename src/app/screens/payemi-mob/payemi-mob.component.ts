@@ -3,7 +3,10 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ApiUrlService } from 'src/app/service/api-url.service';
-import { EnrolledService, enrolledResponse } from 'src/app/service/enrolled.service';
+import {
+  EnrolledService,
+  enrolledResponse,
+} from 'src/app/service/enrolled.service';
 import { Location } from '@angular/common';
 import { MessageConfigService } from 'src/app/service/message-config.service';
 @Component({
@@ -19,7 +22,7 @@ export class PayemiMobComponent {
     private http: HttpClient,
     private apiservice: ApiUrlService,
     private location: Location,
-    private messageConfigService: MessageConfigService,
+    private messageConfigService: MessageConfigService
   ) {}
 
   data: any[] = [];
@@ -51,7 +54,7 @@ export class PayemiMobComponent {
     });
   }
 
-  goBack(){
+  goBack() {
     this.location.back();
   }
   processData() {
@@ -62,7 +65,7 @@ export class PayemiMobComponent {
     }
   }
 
-  payEmi(amount: any, sheetName: any, code: any, data: any, emiNumber: any, ) {
+  payEmi(amount: any, sheetName: any, code: any, data: any, emiNumber: any) {
     this.loader = true;
 
     this.http
@@ -87,21 +90,35 @@ export class PayemiMobComponent {
           this.loader = false;
           const dateObject = new Date();
 
+          const formattedDate = `${dateObject.getDate()}/${
+            dateObject.getMonth() + 1
+          }/${dateObject.getFullYear()}`;
 
-          const formattedDate = `${dateObject.getDate()}/${dateObject.getMonth() + 1}/${dateObject.getFullYear()}`;
-          
-
-          const formattedTime = `${dateObject.getHours()}:${(dateObject.getMinutes() < 10 ? '0' : '') + dateObject.getMinutes()}`;
-          
+          const formattedTime = `${dateObject.getHours()}:${
+            (dateObject.getMinutes() < 10 ? '0' : '') + dateObject.getMinutes()
+          }`;
 
           const result = `${formattedDate} - ${formattedTime}`;
-          
-          if(amount != ''){
-          if(this.messageConfigService.data[1].emiMessage){
-            this.http.get<any>('https://soft7.in/api/send?number=91' + data.number +'&type=text&message=सम्मानीय+' + data.name+',%0A%0Aआपकी+की+किश्त+('+amount+'/-)+%0A'+ result +'+को+जमा+कर+ली+गई+है|%0Aधन्यवाद%0A%0ACard+Number-'+code+'%0A%0Aहरिदर्शन+ज्वेलर्स%0Aबीना&instance_id=658976BB30348&access_token=6578021f0b174').subscribe((res) => {})
 
+          if (amount != '') {
+            if (this.messageConfigService.data[1].emiMessage) {
+              this.http
+                .get<any>(
+                  'https://soft7.in/api/send?number=91' +
+                    data.number +
+                    '&type=text&message=सम्मानीय+' +
+                    data.name +
+                    ',%0A%0Aआपकी+की+किश्त+(' +
+                    amount +
+                    '/-)+%0A' +
+                    result +
+                    '+को+जमा+कर+ली+गई+है|%0Aधन्यवाद%0A%0ACard+Number-' +
+                    code +
+                    '%0A%0Aहरिदर्शन+ज्वेलर्स%0Aबीना&instance_id=665063C96B660&access_token=6643805abf4dc'
+                )
+                .subscribe((res) => {});
+            }
           }
-        }
 
           // Fetch data again after EMI is paid
           this.enrolled.fetch().subscribe(

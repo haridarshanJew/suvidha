@@ -100,7 +100,7 @@ export class BottomActionComponent {
               uniqueNumber +
               '&type=text&message=सम्मानीय+' +
               this.getNameByNumber(uniqueNumber) +
-              ',%0Aअपनी+सुविधा+जमा+योजना+की+इस+माह+की+*किश्त*+जमा+करने+का+कष्ट+करें+|%0Aअगर+किश्त+जमा+हो+तो+इस+मेसेज+को+अनदेखा+करें+|%0A%0A*हरिदर्शन+ज्वेलर्स*%0A*बीना*%0ADear+customer,%0APlease+make+efforts+to+deposit+this+months+*installment*+of+your+Suvidha+Deposit+Scheme.%0AIf+the+installment+is+deposited+then+ignore+this+message.%0A%0A*Haridarshan+Jewellers*%0A*Bina*%0A%0A9425733322&instance_id=658976BB30348&access_token=6578021f0b174'
+              ',%0Aअपनी+सुविधा+जमा+योजना+की+इस+माह+की+*किश्त*+जमा+करने+का+कष्ट+करें+|%0Aअगर+किश्त+जमा+हो+तो+इस+मेसेज+को+अनदेखा+करें+|%0A%0A*हरिदर्शन+ज्वेलर्स*%0A*बीना*%0ADear+customer,%0APlease+make+efforts+to+deposit+this+months+*installment*+of+your+Suvidha+Deposit+Scheme.%0AIf+the+installment+is+deposited+then+ignore+this+message.%0A%0A*Haridarshan+Jewellers*%0A*Bina*%0A%0A9425733322&instance_id=665063C96B660&access_token=6643805abf4dc'
           )
           .subscribe((res) => {
             // Handle response if needed
@@ -137,16 +137,15 @@ export class BottomActionComponent {
         this.enrolled.data[i].benefit != this.selectInstRem
       ) {
         setTimeout(() => {
-              this.http.get<any>( 'https://soft7.in/api/send?number=91' +
-              this.enrolled.data[i].number +
-              '&type=text&message=सम्मानीय+' +
-              this.enrolled.data[i].name +
-              ',%0Aअपनी+सुविधा+जमा+योजना+की+इस+माह+की+*किश्त*+जमा+करने+का+कष्ट+करें+|%0Aअगर+किश्त+जमा+हो+तो+इस+मेसेज+को+अनदेखा+करें+|%0A%0A*हरिदर्शन+ज्वेलर्स*%0A*बीना*%0ADear+customer,%0APlease+make+efforts+to+deposit+this+months+*installment*+of+your+Suvidha+Deposit+Scheme.%0AIf+the+installment+is+deposited+then+ignore+this+message.%0A%0A*Haridarshan+Jewellers*%0A*Bina*%0A%0A9425733322&instance_id=658976BB30348&access_token=6578021f0b174'
-          )
-                .subscribe((res) => {
-
-                });
-
+          this.http
+            .get<any>(
+              'https://soft7.in/api/send?number=91' +
+                this.enrolled.data[i].number +
+                '&type=text&message=सम्मानीय+' +
+                this.enrolled.data[i].name +
+                ',%0Aअपनी+सुविधा+जमा+योजना+की+इस+माह+की+*किश्त*+जमा+करने+का+कष्ट+करें+|%0Aअगर+किश्त+जमा+हो+तो+इस+मेसेज+को+अनदेखा+करें+|%0A%0A*हरिदर्शन+ज्वेलर्स*%0A*बीना*%0ADear+customer,%0APlease+make+efforts+to+deposit+this+months+*installment*+of+your+Suvidha+Deposit+Scheme.%0AIf+the+installment+is+deposited+then+ignore+this+message.%0A%0A*Haridarshan+Jewellers*%0A*Bina*%0A%0A9425733322&instance_id=665063C96B660&access_token=6643805abf4dc'
+            )
+            .subscribe((res) => {});
         }, i * this.selectedDelay * 1000);
       }
       if (i === this.enrolled.data.length - 1) {
@@ -347,7 +346,7 @@ export class BottomActionComponent {
                       this.selectedSchemeName +
                       '.%0A%0AHaridarshan%20jewellers%0ABina&media_url=' +
                       this.messageConfigService.data[3].imageUrl +
-                      '&instance_id=658976BB30348&access_token=6578021f0b174'
+                      '&instance_id=665063C96B660&access_token=6643805abf4dc'
                   )
                   .subscribe((res) => {});
               } else {
@@ -359,7 +358,7 @@ export class BottomActionComponent {
                       this.custName.toUpperCase() +
                       ',%0AYou%20are%20successfully%20enrolled%20in%20' +
                       this.selectedSchemeName +
-                      '.%0A%0AHaridarshan%20jewellers%0ABina&instance_id=658976BB30348&access_token=6578021f0b174'
+                      '.%0A%0AHaridarshan%20jewellers%0ABina&instance_id=665063C96B660&access_token=6643805abf4dc'
                   )
                   .subscribe((res) => {});
               }

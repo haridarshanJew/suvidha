@@ -953,7 +953,7 @@ export class DashboardComponent {
                       this.selectedSchemeName +
                       '.%0A%0AHaridarshan%20jewellers%0ABina&media_url=' +
                       this.messageConfigService.data[3].imageUrl +
-                      '&instance_id=65785DBA24637&access_token=6578021f0b174'
+                      '&instance_id=665063C96B660&access_token=6643805abf4dc'
                   )
                   .subscribe((res) => {});
               } else {
@@ -965,7 +965,7 @@ export class DashboardComponent {
                       this.custName.toUpperCase() +
                       ',%0AYou%20are%20successfully%20enrolled%20in%20' +
                       this.selectedSchemeName +
-                      '.%0A%0AHaridarshan%20jewellers%0ABina&instance_id=65785DBA24637&access_token=6578021f0b174'
+                      '.%0A%0AHaridarshan%20jewellers%0ABina&instance_id=665063C96B660&access_token=6643805abf4dc'
                   )
                   .subscribe((res) => {});
               }
