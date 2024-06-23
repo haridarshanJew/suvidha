@@ -5,6 +5,6 @@ import { Injectable } from '@angular/core';
 })
 export class ApiUrlService {
   public url: any =
-    'https://script.google.com/macros/s/AKfycbzNwer0OhWz3Out4EHKVZCKYTN3sMD1NTYrpVYvZF932KWrVad06YJHDOVoeU5Z4qW3/exec?';
+    'https://script.google.com/macros/s/AKfycbyZADg1xqXgX0w1JteqgdB4jjwJpE7RCtWfFppveduvh49KUJ1YQBq7t4QHYzUeVw/exec?';
   constructor() {}
 }

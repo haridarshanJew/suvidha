@@ -104,7 +104,7 @@ export class PayemiMobComponent {
             if (this.messageConfigService.data[1].emiMessage) {
               this.http
                 .get<any>(
-                  'https://soft7.in/api/send?number=91' +
+                  'https://cloud.soft7.in/api/send?number=91' +
                     data.number +
                     '&type=text&message=सम्मानीय+' +
                     data.name +
@@ -114,7 +114,7 @@ export class PayemiMobComponent {
                     result +
                     '+को+जमा+कर+ली+गई+है|%0Aधन्यवाद%0A%0ACard+Number-' +
                     code +
-                    '%0A%0Aहरिदर्शन+ज्वेलर्स%0Aबीना&instance_id=665063C96B660&access_token=6643805abf4dc'
+                    '%0A%0Aहरिदर्शन+ज्वेलर्स%0Aबीना&instance_id=66762F3B37BF9&access_token=6675c7b3ee4b7'
                 )
                 .subscribe((res) => {});
             }

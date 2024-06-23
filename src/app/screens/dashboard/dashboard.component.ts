@@ -945,7 +945,7 @@ export class DashboardComponent {
               if (this.messageConfigService.data[2].isImage) {
                 this.http
                   .get<any>(
-                    'https://soft7.in/api/send?number=91' +
+                    'https://cloud.soft7.in/api/send?number=91' +
                       this.custNumber +
                       '&type=media&message=Dear%20' +
                       this.custName.toUpperCase() +
@@ -953,19 +953,19 @@ export class DashboardComponent {
                       this.selectedSchemeName +
                       '.%0A%0AHaridarshan%20jewellers%0ABina&media_url=' +
                       this.messageConfigService.data[3].imageUrl +
-                      '&instance_id=665063C96B660&access_token=6643805abf4dc'
+                      '&instance_id=66762F3B37BF9&access_token=6675c7b3ee4b7'
                   )
                   .subscribe((res) => {});
               } else {
                 this.http
                   .get<any>(
-                    'https://soft7.in/api/send?number=91' +
+                    'https://cloud.soft7.in/api/send?number=91' +
                       this.custNumber +
                       '&type=media&message=Dear%20' +
                       this.custName.toUpperCase() +
                       ',%0AYou%20are%20successfully%20enrolled%20in%20' +
                       this.selectedSchemeName +
-                      '.%0A%0AHaridarshan%20jewellers%0ABina&instance_id=665063C96B660&access_token=6643805abf4dc'
+                      '.%0A%0AHaridarshan%20jewellers%0ABina&instance_id=66762F3B37BF9&access_token=6675c7b3ee4b7'
                   )
                   .subscribe((res) => {});
               }
