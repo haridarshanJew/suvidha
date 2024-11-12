@@ -81,7 +81,7 @@ export class EnrolledListComponent {
     const formattedDate = this.formatDate(dateObj);
     const formattedTime = this.formatTime(dateObj);
 
-    return `Paid on ${formattedDate} - ${formattedTime}`;
+    return `${formattedDate} - ${formattedTime}`;
   }
 
   private formatDate(date: Date): string {
@@ -265,5 +265,13 @@ export class EnrolledListComponent {
         }
       });
     // }
+  }
+
+  openw(amount: any, code: any, data: any, date: any) {
+    const message = `सम्मानीय ${data.name},%0A%0Aआपकी किश्त (${amount}/-) %0A${date} को जमा कर ली गई है|%0Aधन्यवाद%0A%0ACard Number - ${code}%0A%0Aहरिदर्शन ज्वेलर्स%0Aबीना`;
+
+    const whatsappURL = `https://wa.me/?text=${message}&phone=91` + data.number;
+
+    window.open(whatsappURL, '_blank');
   }
 }
